@@ -1,0 +1,34 @@
+import { useState } from 'react'
+import Sidebar from '../components/Sidebar'
+import Navbar from '../components/Navbar'
+
+import resolveConfig from 'tailwindcss/resolveConfig'
+import myConfig from '../../tailwind.config'
+import useWindowSize from '../utils/hooks/useWindowSize'
+import { useSelector } from 'react-redux'
+
+const tailwindConfig = resolveConfig(myConfig)
+
+function Layout({children}) {
+  const [showSidebarOnMobile, setShowSidebarOnMobile] = useState(false)
+  const { isAuth } = useSelector(state => state.user);
+  const {width} = useWindowSize()
+
+  const toggleSidebar = () => {
+    setShowSidebarOnMobile(prev => !prev)
+  }
+  
+  return (
+    <>
+        <Navbar toggleSidebar={toggleSidebar} showSidebarOnMobile={showSidebarOnMobile} />
+        {isAuth ? <Sidebar showSidebarOnMobile={showSidebarOnMobile} toggleSidebar={toggleSidebar} /> : null}
+        <main id='main-content' className={`mt-[var(--navbar-height)] ${isAuth ? 'md:ml-[var(--sidebar-width)]' : ''} ${(showSidebarOnMobile && isAuth && width < parseInt(tailwindConfig.theme.screens.md)) ? "before:bg-black/50 before:pointer-events-auto" : "before:pointer-events-none"}`}>
+          <div className="container mx-auto px-2">
+            {children}
+          </div>
+        </main>
+    </>
+  )
+}
+
+export default Layout
