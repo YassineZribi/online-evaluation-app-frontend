@@ -1,5 +1,31 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navbar-height: 60px;
+  --sidebar-width: 260px;
+}
+
+.toast-success div {
+  background-color: #10b981;
+}
+
+.toast-error div {
+  background-color: #ef4444;
+}
+
+.toast-info div {
+  background-color: #06b6d4;
+}
+
+.toast-warning div {
+  background-color: #fcd34d;
+}
+
+#main-content::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  transition: background-color 400ms;
 }
