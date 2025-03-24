@@ -1,5 +1,5 @@
 import { alertError } from "../../utils/feedback";
-import { REQUEST_STARTED, REQUEST_SUCCEEDED, REQUEST_FAILED, PAGE_LOADING_END } from "../types/feedbackTypes";
+import { REQUEST_STARTED, REQUEST_SUCCEEDED, REQUEST_FAILED, PAGE_LOADING_END, BACKDROP_TOGGLED } from "../types/feedbackTypes";
 
 export const requestStarted = () => ({
     type: REQUEST_STARTED
@@ -11,6 +11,11 @@ export const requestSucceeded = () => ({
 
 export const pageLoadingEnd = () => ({
     type: PAGE_LOADING_END
+})
+
+export const displayBackdrop = (show) => ({
+    type: BACKDROP_TOGGLED,
+    payload: show
 })
 
 export const requestFailed = (err) => {
