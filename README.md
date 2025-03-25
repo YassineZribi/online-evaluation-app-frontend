@@ -1,4 +1,4 @@
-# Plateforme de Quiz en ligne
+# Plateforme de Quiz en ligne (Partie Frontend)
 
 ## 📌 Description
 Plateforme en ligne dédiée aux évaluations sous forme de quiz. Elle permettra aux créateurs de quiz de créer des évaluations personnalisées et de les attribuer aux participants concernés. Les participants pourront répondre aux questions dans un délai prédéfini, et les résultats seront calculés automatiquement.
